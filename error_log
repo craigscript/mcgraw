@@ -1,0 +1,157 @@
+[18-Sep-2017 16:28:53 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/mcgraw/public_html/main.php on line 652
+[18-Sep-2017 17:58:47 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/mcgraw/public_html/main.php on line 455
+[20-Sep-2017 19:19:08 UTC] PHP Parse error:  syntax error, unexpected 'fopa' (T_STRING), expecting ',' or ';' in /home/mcgraw/public_html/main.php on line 237
+[20-Sep-2017 19:19:09 UTC] PHP Parse error:  syntax error, unexpected 'fopa' (T_STRING), expecting ',' or ';' in /home/mcgraw/public_html/main.php on line 237
+[25-Sep-2017 17:49:27 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/mcgraw/public_html/main.php on line 201
+[25-Sep-2017 17:49:28 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/mcgraw/public_html/main.php on line 201
+[26-Sep-2017 01:59:31 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/mcgraw/public_html/main.php on line 229
+[26-Sep-2017 03:18:19 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/mcgraw/public_html/main.php on line 232
+[26-Sep-2017 15:18:00 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/mcgraw/public_html/main.php on line 223
+[02-Oct-2017 02:30:03 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/mcgraw/public_html/main.php on line 425
+[02-Oct-2017 02:30:31 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/mcgraw/public_html/main.php on line 425
+[02-Oct-2017 03:23:24 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/main.php(36): getFields('Assets')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[02-Oct-2017 03:23:48 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/main.php(36): getFields('Assets')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[02-Oct-2017 03:23:53 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/tenant.php(35): getFields('Tenants')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[02-Oct-2017 03:23:56 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/main.php(36): getFields('Assets')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[06-Oct-2017 15:48:54 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/mcgraw/public_html/main.php on line 224
+[11-Oct-2017 16:14:55 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/mcgraw/public_html/main.php on line 101
+[11-Oct-2017 17:23:28 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/mcgraw/public_html/main.php on line 201
+[17-Oct-2017 22:11:06 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/main.php(35): getFields('Assets')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[17-Oct-2017 22:11:16 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/main.php(35): getFields('Assets')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[17-Oct-2017 22:11:18 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/tenant.php(35): getFields('Tenants')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[17-Oct-2017 22:11:20 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/main.php(35): getFields('Assets')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[17-Oct-2017 22:11:27 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/main.php(35): getFields('Assets')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[17-Oct-2017 22:11:28 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/tenant.php(35): getFields('Tenants')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[17-Oct-2017 22:11:29 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/workorder.php(35): getFields('WorkOrders')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[17-Oct-2017 22:11:30 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/main.php(35): getFields('Assets')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[25-Oct-2017 22:44:13 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/main.php(35): getFields('Assets')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[25-Oct-2017 22:44:27 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/main.php(35): getFields('Assets')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[25-Oct-2017 22:44:56 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/main.php(35): getFields('Assets')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[25-Oct-2017 22:45:00 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/tenant.php(35): getFields('Tenants')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[25-Oct-2017 22:45:07 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/workorder.php(35): getFields('WorkOrders')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[25-Oct-2017 22:45:20 UTC] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Get Fields Failed' in /home/mcgraw/public_html/includes/database.php:120
+Stack trace:
+#0 /home/mcgraw/public_html/workorder.php(35): getFields('WorkOrders')
+#1 {main}
+  thrown in /home/mcgraw/public_html/includes/database.php on line 120
+[07-Nov-2017 23:04:09 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/mcgraw/public_html/includes/database.php on line 159
+[07-Nov-2017 23:04:30 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/mcgraw/public_html/includes/database.php on line 159
+[07-Nov-2017 23:04:50 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/mcgraw/public_html/includes/database.php on line 152
+[07-Nov-2017 23:05:15 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/mcgraw/public_html/includes/database.php on line 152
+[07-Nov-2017 23:05:31 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/mcgraw/public_html/includes/database.php on line 151
+[07-Nov-2017 23:05:42 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/mcgraw/public_html/includes/database.php on line 151
+[07-Nov-2017 23:05:59 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/mcgraw/public_html/includes/database.php on line 153
+[07-Nov-2017 23:06:06 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/mcgraw/public_html/includes/database.php on line 153
+[07-Nov-2017 23:06:11 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/mcgraw/public_html/includes/database.php on line 151
+[07-Nov-2017 23:06:36 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/mcgraw/public_html/includes/database.php on line 151
+[07-Nov-2017 23:10:53 UTC] PHP Parse error:  syntax error, unexpected '.' in /home/mcgraw/public_html/includes/database.php on line 37
+[07-Nov-2017 23:10:55 UTC] PHP Parse error:  syntax error, unexpected '.' in /home/mcgraw/public_html/includes/database.php on line 37
+[28-Nov-2017 17:53:30 UTC] PHP Parse error:  syntax error, unexpected 'elseif' (T_ELSEIF) in /home/mcgraw/public_html/main.php on line 189
+[29-Nov-2017 17:09:45 UTC] PHP Fatal error:  Call to undefined function debug_to_console() in /home/mcgraw/public_html/includes/database.php on line 147
+[29-Nov-2017 17:09:47 UTC] PHP Fatal error:  Call to undefined function debug_to_console() in /home/mcgraw/public_html/includes/database.php on line 147
+[29-Nov-2017 17:09:48 UTC] PHP Fatal error:  Call to undefined function debug_to_console() in /home/mcgraw/public_html/includes/database.php on line 147
+[29-Nov-2017 17:09:49 UTC] PHP Fatal error:  Call to undefined function debug_to_console() in /home/mcgraw/public_html/includes/database.php on line 147
+[29-Nov-2017 18:11:26 UTC] PHP Parse error:  syntax error, unexpected '$fields' (T_VARIABLE), expecting ',' or ';' in /home/mcgraw/public_html/main.php on line 40
+[29-Nov-2017 19:32:49 UTC] PHP Warning:  fwrite() expects parameter 2 to be string, array given in /home/mcgraw/public_html/main.php on line 41
+[29-Nov-2017 19:33:17 UTC] PHP Warning:  fwrite() expects parameter 2 to be string, array given in /home/mcgraw/public_html/main.php on line 41
+[29-Nov-2017 19:38:16 UTC] PHP Warning:  fwrite() expects parameter 2 to be string, array given in /home/mcgraw/public_html/main.php on line 42
+[29-Nov-2017 19:39:03 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 42
+[29-Nov-2017 19:39:27 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 42
+[29-Nov-2017 19:40:31 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/mcgraw/public_html/main.php on line 41
+[29-Nov-2017 19:40:39 UTC] PHP Warning:  fwrite() expects parameter 2 to be string, array given in /home/mcgraw/public_html/main.php on line 41
+[29-Nov-2017 19:52:24 UTC] PHP Warning:  fwrite() expects parameter 2 to be string, array given in /home/mcgraw/public_html/main.php on line 41
+[29-Nov-2017 19:52:29 UTC] PHP Warning:  fwrite() expects parameter 2 to be string, array given in /home/mcgraw/public_html/main.php on line 41
+[29-Nov-2017 19:53:19 UTC] PHP Warning:  fwrite() expects parameter 2 to be string, array given in /home/mcgraw/public_html/main.php on line 41
+[29-Nov-2017 19:57:07 UTC] PHP Warning:  fwrite() expects parameter 2 to be string, array given in /home/mcgraw/public_html/main.php on line 41
+[29-Nov-2017 20:26:16 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[29-Nov-2017 20:26:39 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 14:19:40 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 15:50:25 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 15:50:43 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 15:50:45 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 15:50:57 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 15:51:32 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 15:51:34 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 15:52:20 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 15:52:31 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 15:53:43 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 15:56:38 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 16:28:36 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 16:28:37 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 16:28:38 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 16:28:40 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 16:28:41 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 16:29:35 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 16:32:49 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 16:32:52 UTC] PHP Warning:  file_put_contents() expects parameter 1 to be a valid path, resource given in /home/mcgraw/public_html/main.php on line 41
+[30-Nov-2017 17:32:36 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/mcgraw/public_html/main.php on line 41
+[04-Dec-2017 16:42:39 UTC] PHP Parse error:  syntax error, unexpected 'var_dump' (T_STRING), expecting ',' or ';' in /home/mcgraw/public_html/includes/database.php on line 151
+[04-Dec-2017 16:42:54 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/mcgraw/public_html/includes/database.php on line 152

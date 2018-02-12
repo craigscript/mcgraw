@@ -1,0 +1,40 @@
+.modal {
+	background: white;
+	height: 100%;
+	top: 0% !important;
+	max-height: 100vh;
+	z-index: 2000;
+	width: auto;
+    position: absolute;
+    left: auto;
+    right: auto;
+}
+.modal-body{
+	max-height: calc(100vh);
+    overflow-y: auto;
+}
+.check-error{
+	color: red;
+	font-weight: bold;
+}
+.mcfile{
+	float:left;
+	width: 80%;
+}
+
+.file-button{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+#itemForm{
+	height: 100vh;
+}
+.modal-content{
+	height: 85%;
+	width: 100%;
+}
+

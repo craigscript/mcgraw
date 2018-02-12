@@ -1,0 +1,7 @@
+[26-Sep-2017 05:46:19 UTC] PHP Fatal error:  Call to undefined function imagettftext() in /home/mcgraw/public_html/contact/get_captcha.php on line 41
+[26-Sep-2017 05:47:19 UTC] PHP Fatal error:  Call to undefined function imagettftext() in /home/mcgraw/public_html/contact/get_captcha.php on line 41
+[26-Sep-2017 05:48:07 UTC] PHP Fatal error:  Call to undefined function imagettftext() in /home/mcgraw/public_html/contact/get_captcha.php on line 41
+[26-Sep-2017 05:48:47 UTC] PHP Fatal error:  Call to undefined function imagettftext() in /home/mcgraw/public_html/contact/get_captcha.php on line 41
+[26-Sep-2017 05:52:23 UTC] PHP Fatal error:  Call to undefined function imagettftext() in /home/mcgraw/public_html/contact/get_captcha.php on line 41
+[26-Sep-2017 05:52:41 UTC] PHP Fatal error:  Call to undefined function imagettftext() in /home/mcgraw/public_html/contact/get_captcha.php on line 41
+[14-Dec-2017 16:26:02 UTC] PHP Fatal error:  Call to undefined function imagettftext() in /home/mcgraw/public_html/contact/get_captcha.php on line 41
