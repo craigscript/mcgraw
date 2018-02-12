@@ -347,61 +347,63 @@
 					        					</div>
 					        			
 					        
-
-
 					      				<?php }	}
 
 					      				 } ?>
 					      			</div>
 					      		</div>
 					      	</div>
+					      	<div>
+					      		<select>
+					      			<option value="Internal">Internal</option>
+					      			<option value="External">External</option>
+					      		</select>
+					      	</div>
 				      	</div>
 				     </div>
+	      	<?php }
 
-
-		      <?php }
-
-		      //here is where I need to create the checklist portion
+	      	//here is where I need to create the checklist portion
 
 
 
-		      ?>
-		      <div id="checklist" class="modal-content">
-		      	 		<div class="row modal-body">
-				    		<div class="col-xs-12"></div>
+	      	?>
+	      <div id="checklist" class="modal-content">
+      	 		<div class="row modal-body">
+		    		<div class="col-xs-12"></div>
 
-				    			<?php foreach($tabs as $tab) { ?>
-				    			<div class="col-xs-12 checklist-title"><?php echo $tab; ?></div>
-				    			<hr/>
+		    			<?php foreach($tabs as $tab) { ?>
+		    			<div class="col-xs-12 checklist-title"><?php echo $tab; ?></div>
+		    			<hr/>
 
-				    			<?php foreach ($fields[$tab] as $field){ 
-				      					if((is_array($field))){ 
-				      						foreach( $field as $subField){
-				      							?>
-				      								<div class="col-sm-4 col-xs-12" id="check-<?php  echo friendly($subField->name); ?>">
-				      									<?php echo $subField->name; ?>
-				      									
-				      								</div>
-				      							<?php
+		    			<?php foreach ($fields[$tab] as $field){ 
+		      					if((is_array($field))){ 
+		      						foreach( $field as $subField){
+		      							?>
+		      								<div class="col-sm-4 col-xs-12" id="check-<?php  echo friendly($subField->name); ?>">
+		      									<?php echo $subField->name; ?>
+		      									
+		      								</div>
+		      							<?php
 
-				      						}
-												?>
+		      						}
+										?>
 
-				      					<?php }else { ?>
+		      					<?php }else { ?>
 
-				      						<div class="col-sm-4 col-xs-12" id="check-<?php  echo friendly($field->name); ?>"><?php echo $field->name; ?></div>
+		      						<div class="col-sm-4 col-xs-12" id="check-<?php  echo friendly($field->name); ?>"><?php echo $field->name; ?></div>
 
 
-				      					<?php	} ?>
+		      					<?php	} ?>
 
-				    			<?php }
-				    			 ?><div class="clear"></div>
-				    			<?php } ?>
+		    			<?php }
+		    			 ?><div class="clear"></div>
+		    			<?php } ?>
 
 
 
 
-				    	</div>
+		    	</div>
 			</div>
 		    <div class="modal-footer">
 		     	 <a href="" class="btn btn-primary">Close</a>

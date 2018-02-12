@@ -4,14 +4,14 @@
 	top: 0% !important;
 	max-height: 100vh;
 	z-index: 2000;
-	width: auto;
+	width: 100%;
     position: absolute;
     left: auto;
     right: auto;
+    overflow: auto;
 }
 .modal-body{
-	max-height: calc(100vh);
-    overflow-y: auto;
+
 }
 .check-error{
 	color: red;
@@ -36,5 +36,6 @@
 .modal-content{
 	height: 85%;
 	width: 100%;
+	overflow: auto;
 }
 

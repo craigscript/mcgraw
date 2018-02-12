@@ -3543,7 +3543,7 @@ body.fixed-left-void {
 #myCarousel{
   margin: 0 auto;
   width: 80%;
-  height: 50vw;
+  height: 50vh;
   overflow: hidden;
 }
 #myCarousel img {
