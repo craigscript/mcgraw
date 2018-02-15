@@ -2,8 +2,9 @@
 	require_once('includes/common.php');
 	require_once('includes/header.php');
 	// require_once('includes/nav.php');
-	require_once('includes/database.php');
+	//require_once('includes/database.php');
 	
+
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 	    //if request method is post
 	    //now validate input
@@ -12,9 +13,10 @@
 	    $error = null;
 	    if(empty($username) || empty($password)){
 		$error = "Please enter both a Username and a Password";
-	    }else{
+	    }else{	
 		try{
 		    $login = login($username, $password);
+		    echo $login;
 		}catch(Exception $e){
 		    $error = "Invalid Username or Password";
 		}
@@ -35,32 +37,33 @@
  ?>
 
  <div class="wrapper-page">
- 	<div class="panel panel-color panel-primary panel-pages">
- 		<div class="panel-body"">
+ 	<div class="box box-primary">
+ 		<div class="box-header with-border">
  			<h3 class="text-center m-t-0 m-b-15"> 
- 					<a href="index.html" class="logo logo-admin"><h1 style="font-size: 3em">M<span style="font-family: Raleway;">|</span>G</h1></a></h3><h4 class="text-muted text-center m-t-0"><b>Sign In</b>
- 				<h4/>
- 				<div class='error-text'><?php echo $error; ?></div>
- 				<form class="form-horizontal m-t-20" action="login.php" method="post">
- 					<div class="form-group">
- 						<div class="col-xs-12"> 
- 						<input class="form-control" name='username' id="icon_prefix" type="text" required="" placeholder="Username">
- 						</div>
- 					</div>
- 					<div class="form-group">
- 						<div class="col-xs-12"> 
- 							<input class="form-control" name='password' id="password" type="password" required="" placeholder="Password">
- 						</div>
- 					</div>
- 					<div class="form-group text-center m-t-40">
- 						<div class="col-xs-12"> 
- 							<button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Log In</button>
- 						</div>
- 						</div>
- 				</form>
- 			</div>
+				<a href="index.html" class="logo logo-admin"><h1 style="font-size: 3em">M<span style="font-family: Raleway;">|</span>G</h1></a></h3><h3 class="box-title">Sign In
+			<h3/>
  		</div>
- 	</div>
+ 		<form class="" action="login.php" method="post" role="form">
+ 			<div class="box-body"">
+
+ 				<div class='error-text'><?php echo $error; ?></div>
+ 					<div class="form-group">
+ 						<label for="username">Username</label> 
+ 						<input class="form-control" name='username' id="username" type="text" required="" placeholder="Username">
+ 					</div>
+ 					<div class="form-group">
+							<label for="password">Password</label> 
+							<input class="form-control" name='password' id="password" type="password" required="" placeholder="Password">
+ 					</div>
+			</div>
+			<div class="box-footer">
+				<div class="col-xs-12"> 
+					<button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Log In</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
 
 
 <!-- body tags included in this layout due to lack of nav and footer 

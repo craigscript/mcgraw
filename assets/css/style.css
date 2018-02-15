@@ -1346,8 +1346,6 @@ File: Components
   border: 1px solid rgba(42, 50, 60, 0.2) !important;
 }
 .btn-primary {
-  background-color: #3292e0 !important;
-  border: 1px solid #3292e0 !important;
 }
 .btn-primary:hover,
 .btn-primary:focus,
