@@ -20,7 +20,8 @@ function getFileMakerConnection()
 
 function mysqlConnection() {
     global $con;
-    $con = mysql_connect('localhost', 'mcgraw_assets', 'Indormitable123$');
+    $con = mysqli_connect('localhost', 'mcgraw_kirill', 'Indormitable123$');
+    return $con;
 }
 
 function throwExceptionOnFMError($obj)
@@ -46,8 +47,13 @@ function login($userName, $password){
 
     //echo "attempting login with " . $userName . " and " . $password . "<br/>";
     $hash = md5($password);
-    $mysql = mysqlConnection();
-    $query = "select * from where username = '$userName' and password = '$hash'";
+    $con = mysqlConnection();
+    $query = "select * from Users where username = '$userName' and hash = '$hash'";
+    $rowCount = 0;
+    if($res = mysqli_query($con, $query)) {
+        $rowCount = mysqli_num_rows($res);
+        
+    }
     return $query;
 }
 
