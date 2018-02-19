@@ -6,9 +6,9 @@
  *
  * @author erik
  */
-class Field extends \mcs\FMRecordTemplate
+class Field
 {
-
+	private $rec = null;
     public $name;
     public $tab;
     public $width;
@@ -16,6 +16,26 @@ class Field extends \mcs\FMRecordTemplate
     public $choices;
     public $related = false;
 
+	function __construct($rec=null, $prefix=null)
+	{if($rec != null){
+		if ($prefix !== null)
+			$this->prefix = "{$prefix}::";
+		$this->rec = $rec;
+		$this->readData();
+		}
+	}
+	protected function readData()
+	{
+		$this->name = $this->rec['name'];
+		$this->tab = $this->rec['_c_tab'];
+		$this->parentTab = $this->rec['_c_parent_tab'];
+		$this->width = $this->rec['width'];
+		$this->type = $this->rec['type'];
+		$this->choices = [];
+
+		//var_dump($this->choices);
+	//echo "<br/>";
+	}
 	protected function readFields()
 	{
 		$this->name = $this->getField('name');

@@ -384,7 +384,6 @@ a:focus {
   -ms-transition: color 0.28s ease;
   -o-transition: color 0.28s ease;
   -webkit-transition: color 0.28s ease;
-  color: #ee6e73;
   display: block;
   height: 100%;
   text-decoration: none;
@@ -439,12 +438,10 @@ a:focus {
   white-space: nowrap;
 }
 .nav.nav-tabs > li.active > a {
-  background-color: #3292e0;
-  color: #ffffff !important;
-  border: 0;
+  
 }
 .nav.nav-tabs > li.active > a:hover {
-  color: #ffffff !important;
+  
 }
 .nav.nav-tabs > li > a,
 .nav.tabs-vertical > li > a {

@@ -2,7 +2,7 @@
 	require_once('includes/common.php');
 	require_once('includes/header.php');
 	require_once('includes/nav.php');
-	require_once('includes/database.php');
+	require_once('includes/connection.php');
 
 	$page = "Customer";
 	
@@ -94,8 +94,8 @@
                         	<div class="col-md-12">
                         		<div class="list-group text-center">
                         			<?php foreach ($dbItems as $dbItem) { ?>
-                        				<a href="#modal1" id="btn-default-<?php echo $dbItem->id; ?>" class="list-group-item" onclick="getDBItem(<?php echo $dbItem->id . ",'" . $page . "'"; ?>)">
-                        					<h5 class="left asset-label valign"> <?php echo $dbItem->store["Customer Name"]; ?></h5>
+                        				<a href="#modal1" id="btn-default-<?php echo $dbItem['id']; ?>" class="list-group-item" onclick="getDBItem(<?php echo $dbItem['id'] . ",'" . $page . "'"; ?>)">
+                        					<h5 class="left asset-label valign"> <?php echo $dbItem["Customer Name"]; ?></h5>
                         				</a>
 
                         			<?php } ?>

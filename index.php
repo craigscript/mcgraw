@@ -2,7 +2,7 @@
 require_once "includes/common.php";
 require_once "includes/header.php";
 require_once "includes/nav.php";
-require_once('includes/database.php');
+require_once('includes/connection.php');
 //redirectRequest("main.php");
 
 $assets = count(getDBItems("Assets"));

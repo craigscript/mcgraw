@@ -2,19 +2,16 @@
 	require_once('includes/common.php');
 	require_once('includes/header.php');
 	require_once('includes/nav.php');
-	require_once('includes/database.php');
+	require_once('includes/connection.php');
 
 	$page = "Assets";
-	
-
-
 	if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		if (empty($_POST["id"])) {
 			newDBItem($_POST,$page);
 		}else{
 			//echo "setting db item<\br>";
-		setDBItem($_POST,$page);
-	}
+			setDBItem($_POST,$page);
+		}
 		foreach($_FILES as $file){
 
 			$target_dir = "uploads/";
@@ -33,7 +30,6 @@
 
 	$dbItems = getDBItems($page);
 	$fields = getFields($page);
-
 	$tabs = array_keys($fields);
 	function glob_recursive($directory, &$directories = array()) {
         foreach(glob($directory, GLOB_ONLYDIR | GLOB_NOSORT) as $folder) {
@@ -123,8 +119,8 @@
                         	<div class="col-md-12">
                         		<div class="list-group text-center">
                         			<?php foreach ($dbItems as $dbItem) { ?>
-                        				<a href="#modal1" id="btn-default-<?php echo $dbItem->id; ?>" class="list-group-item" onclick="getDBItem(<?php echo $dbItem->id . ",'" . $page . "'"; ?>)">
-                        					<h5 class="left asset-label valign"> <?php echo $dbItem->name; ?></h5>
+                        				<a href="#modal1" id="btn-default-<?php echo $dbItem['id']; ?>" class="list-group-item" onclick="getDBItem(<?php echo $dbItem["id"] . ",'" . $page . "'"; ?>)">
+                        					<h5 class="left asset-label valign"> <?php echo $dbItem['Name']; ?></h5>
                         				</a>
 
                         			<?php } ?>
@@ -140,10 +136,43 @@
 		 	<input id="id" name="id" type="hidden" />
 			<div class="nav-content">
 		      <ul class="nav nav-tabs tabs">
-		      <?php foreach($tabs as $tab) { ?>
+		      <?php 
+		      $subs = [];
+		      foreach($tabs as $tab) { ?>
+			    <?php
+			    $completed = [];
+			    
+			    foreach ($fields[$tab] as $field){ 
+  					if((is_array($field))){
+  						//this means that we have found subtabs list grab them.
+	  					if(!in_array($tab, $completed)){
+	  						$completed[] = $tab; 
+	  						$subs[$tab] = array_keys($fields[$tab]);
+						}
+					}
+				}
+		     	if(count($subs[$tab]) > 0) { ?>
+					<li class="tab dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href='#' aria-expanded='false' ><?php echo $tab; ?></a>
+						<ul class="dropdown-menu">
+						<?php
+					    foreach($subs[$tab] as $subTab) { ?>
 
-		        <li class="tab"><a class="" href='<?php echo "#" . friendly($tab); ?>' ><?php echo $tab; ?></a></li>
-		        <?php } ?>
+					        <li role="presentation"><a role="menuitem" href='<?php echo "#" . friendly($subTab); ?>' ><?php echo $subTab; ?></a></li>
+					        
+					        <?php 
+					    	} 
+				    	?>
+			        	</ul> 
+		 			</li>
+		        <?php 
+			    }
+		    	else {
+			    	?>
+			    	<li class="tab"><a class="" href='<?php echo "#" . friendly($tab); ?>' ><?php echo $tab; ?></a>
+		        	</li>
+		        <?php
+			    } 
+		        } ?>
 		        <li class="tab"><a class="" href='#checklist' >Check List</a></li>
 		      </ul>
 		    </div>
@@ -212,15 +241,7 @@
 
 			      						//var_dump($subTabs);
 			      						?>
-			      						<div class="nav-content">
-									      <ul class="nav nav-tabs tabs">
-									      <?php foreach($subTabs as $subTab) { ?>
-
-									        <li class="tab"><a class="form-control" href='<?php echo "#" . friendly($subTab); ?>' ><?php echo $subTab; ?></a></li>
-									        
-									        <?php } ?>
-									      </ul>
-									    </div>
+			      						
 
 									    <?php foreach($subTabs as $subTab) { ?>
 											<div id="<?php echo friendly($subTab); ?>" >
@@ -233,7 +254,7 @@
 			      							?>
 			      								
 				      								<div class="form-group">
-												    	<a class="btn bnt-default" id="<?php echo friendly($field->name) . "_get"; ?>" href="" ><i class="">file_download</i></a>
+												    	<a class="btn btn-default" id="<?php echo friendly($field->name) . "_get"; ?>" href="" ><i class="">file_download</i></a>
 				      									<div class="form-group">
 													      	<div class="btn btn-default">
 													        	<span>File</span>

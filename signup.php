@@ -2,7 +2,7 @@
 	require_once('includes/common.php');
 	require_once('includes/header.php');
 	// require_once('includes/nav.php');
-	require_once('includes/database.php');
+	require_once('includes/connection.php');
 	
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 	    //if request method is post
@@ -38,47 +38,46 @@
  ?>
 
  <div class="wrapper-page">
- 	<div class="panel panel-color panel-primary panel-pages">
- 		<div class="panel-body"">
+ 	<div class="box box-primary">
+ 		<div class="box-header with-border">
  			<h3 class="text-center m-t-0 m-b-15"> 
  					<a href="index.html" class="logo logo-admin"><h1 style="font-size: 3em">M<span style="font-family: Raleway;">|</span>G</h1></a></h3><h4 class="text-muted text-center m-t-0"><b>Sign up</b>
  				<h4/>
- 				<div class='error-text'><?php echo $error; ?></div>
- 				<form class="form-horizontal m-t-20" action="signup.php" method="post">
- 					<div class="form-group">
- 						<div class="col-xs-12"> 
- 						<input class="form-control" name='name_first' id="icon_prefix" type="text" required="" placeholder="First Name">
- 						</div>
- 					</div>
- 					<div class="form-group">
- 						<div class="col-xs-12"> 
- 						<input class="form-control" name='name_last' id="icon_prefix" type="text" required placeholder="Last Name">
- 						</div>
- 					</div>
- 					<div class="form-group">
- 						<div class="col-xs-12"> 
- 						<input class="form-control" name='username' id="icon_prefix" type="text" required placeholder="Username">
- 						</div>
- 					</div>
- 					<div class="form-group">
- 						<div class="col-xs-12"> 
- 							<input class="form-control" name='password' id="password" type="password" required placeholder="Password">
- 						</div>
- 					</div>
- 					<div class="form-group">
- 						<div class="col-xs-12"> 
- 							<input class="form-control" name='confirmpassword' id="confirmpassword" type="password" required placeholder="Confirm Password">
- 						</div>
- 					</div>
- 					<div class="form-group text-center m-t-40">
- 						<div class="col-xs-12"> 
- 							<button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Sign up</button>
- 						</div>
- 						</div>
- 				</form>
- 			</div>
  		</div>
- 	</div>
+ 		<form class="" action="signup.php" method="post">
+ 			<div class="box-body"">
+ 			
+ 				<div class='error-text'><?php echo $error; ?></div>
+
+				<div class="form-group">
+					<label for="name_first">First Name</label> 
+					<input class="form-control" name='name_first' id="name_first" type="text" required="" placeholder="First Name">
+				</div>
+				<div class="form-group">
+					<label for="name_last">Last Name</label> 
+					<input class="form-control" name='name_last' id="name_last" type="text" required placeholder="Last Name">
+				</div>
+				<div class="form-group">
+					<label for="username">User Name</label>  
+					<input class="form-control" name='username' id="username" type="text" required placeholder="Username">
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label> 
+					<input class="form-control" name='password' id="password" type="password" required placeholder="Password">
+				</div>
+				<div class="form-group">
+					<label for="confirmpassword">Confirm Password</label>
+					<input class="form-control" name='confirmpassword' id="confirmpassword" type="password" required placeholder="Confirm Password">
+				</div>
+			</div>
+			<div class="box-footer">
+				<div class="col-xs-12"> 
+					<button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Sign up</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
 
 
 <!-- body tags included in this layout due to lack of nav and footer 

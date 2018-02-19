@@ -3,66 +3,28 @@
 	require_once('includes/header.php');
 	// require_once('includes/nav.php');
 	//require_once('includes/connection.php');
-	
-
-	if($_SERVER["REQUEST_METHOD"] == "POST"){
-	    //if request method is post
-	    //now validate input
-	    $username = $_POST['username'];
-	    $password = $_POST['password'];
-	    $error = null;
-	    if(empty($username) || empty($password)){
-		$error = "Please enter both a Username and a Password";
-	    }else{	
-		try{
-		    $login = login($username, $password);
-
-		}catch(Exception $e){
-		    $error = "Invalid Username or Password";
-		}
-	    }
-	    if($error == "" && $login > 0){
-		//echo "<div class='success-text'>Login Successful!!</div>";
-		$_SESSION["logged_in"] = "true";
-		$_SESSION["username"] = $username;
-		$_SESSION["password"] = $password;
-		redirectRequest("main.php");
-	    }else{
-			echo "<div class='error-text'>" . $error . "</div>";
-	    }
-	}elseif(!empty($_GET["logout"])){
-	    session_destroy();
-	    redirectRequest("McgrawLanding/index.html");
-	}
  ?>
 
  <div class="wrapper-page">
  	<div class="box box-primary">
  		<div class="box-header with-border">
  			<h3 class="text-center m-t-0 m-b-15"> 
-				<a href="index.html" class="logo logo-admin"><h1 style="font-size: 3em">M<span style="font-family: Raleway;">|</span>G</h1></a></h3><h3 class="box-title">Sign In
+				<a href="index.html" class="logo logo-admin"><h1 style="font-size: 3em">M<span style="font-family: Raleway;">|</span>G</h1></a></h3><h3 class="box-title">Forgot Password?
 			<h3/>
  		</div>
- 		<form class="" action="login.php" method="post" role="form">
+ 		<form class="" action="forgot.php" method="post" role="form">
  			<div class="box-body"">
 
  				<div class='error-text'><?php echo $error; ?></div>
 				<div class="form-group">
-					<label for="username">Username</label> 
-					<input class="form-control" name='username' id="username" type="text" required="" placeholder="Username">
-				</div>
-				<div class="form-group">
-					<label for="password">Password</label> 
-					<input class="form-control" name='password' id="password" type="password" required="" placeholder="Password">
+					<label for="email">Email</label> 
+					<input class="form-control" name='email' id="email" type="text" required="" placeholder="Email">
 				</div>
 			</div>
 			<div class="box-footer">
 
 				<div class="form-group"> 
-					<button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Log In</button>
-				</div>
-				<div class="form-group">
-					<a href="forgot.php" >Forgot password?</a>
+					<button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Send Reset Email</button>
 				</div>
 			</div>
 		</form>

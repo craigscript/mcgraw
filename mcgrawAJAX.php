@@ -9,7 +9,7 @@ require_once('includes/common.php');
 
 	if (! empty($dbItem)	) {
 		//var_dump($asset->toArray());
-	echo json_encode($dbItem->toArray());
+	echo json_encode($dbItem);
 	}
 	else{
 		echo "[]";

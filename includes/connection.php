@@ -20,7 +20,7 @@ function getFileMakerConnection()
 
 function mysqlConnection() {
     global $con;
-    $con = mysqli_connect('localhost', 'mcgraw_kirill', 'Indormitable123$');
+    $con = mysqli_connect('localhost', 'mcgraw_kirill', 'Indormitable123$', 'mcgraw_assets');
     return $con;
 }
 
@@ -48,13 +48,15 @@ function login($userName, $password){
     //echo "attempting login with " . $userName . " and " . $password . "<br/>";
     $hash = md5($password);
     $con = mysqlConnection();
+
     $query = "select * from Users where username = '$userName' and hash = '$hash'";
     $rowCount = 0;
     if($res = mysqli_query($con, $query)) {
         $rowCount = mysqli_num_rows($res);
-        
+        mysqli_free_result($res);
+        mysqli_close($con);
     }
-    return $query;
+    return $rowCount;
 }
 
 function signup($post){
@@ -97,113 +99,85 @@ function signup($post){
 
 
 function getDBItems($page){
-$fields = getFieldNames($page);
-    $fm = getFileMakerConnection();
-    $cmd = $fm->newFindCommand('PHP-'.$page);
-   	//cmd->addFindCriterion('username', '=='.$userName);
-    
-    $result = $cmd->execute();
-    
-    if ($fm->isError($result))
-    {
-    	//echo "Error - " . $result->getMessage();
-	    throw new \ErrorException("Get DBItems Failed");
+    $con = mysqlConnection();
+    $query = "select * from $page";
+    $rows = array();
+    if($res = mysqli_query($con, $query)) {
+        while($row = mysqli_fetch_assoc($res)) {
+            array_push($rows, $row);  
+        }
     }
-
-    
-    $records = $result->getRecords();
-
-    $toReturn = [];
-
-    foreach ($records as $record) {
-
-    	$dbItem = new DBItem();
-
-    $dbItem->setDBItemFields($fields);
-    $dbItem->reInit($record);
-    	$toReturn[] = $dbItem;
-    }
-
-
-    return $toReturn;
+    return $rows;
 }
 
 function getFields($page){
-
-    $fm = getFileMakerConnection();
-    $cmd = $fm->newFindCommand('PHP-FORMFIELDS');
-    $cmd->addFindCriterion('page', '=='.$page);
-    if($_SESSION["access"] != "Internal"){
-       	$cmd->addFindCriterion('access', '==All');
-       }
-    $cmd->addSortRule('sort', 1, FILEMAKER_SORT_ASCEND);
-    $result = $cmd->execute();
-    
-    if ($fm->isError($result))
-    {
-    	//echo "Error - " . $result->getMessage();
-	    throw new \ErrorException("Get Fields Failed");
-    }
-
-    
-    $records = $result->getRecords();
-
+    $con = mysqlConnection();
+    $query = "select * from PHP_Formfields where page = '$page' order by sort";
     $tabs = [];
-    foreach ($records as $record) {
-    	$field = new Field($record);
-    	
-        $parentTab = trim($field->parentTab);
-        if(empty($parentTab)){
-            if(empty($tabs[$field->tab])){
-                $tabs[$field->tab] = [];
-            }
-            $tabs[$field->tab][] = $field;
-        }else{
-            if(empty($tabs[$parentTab][$field->tab])){
-                $tabs[$parentTab][$field->tab] = [];
+    if($res = mysqli_query($con, $query)) {
+        while($record = mysqli_fetch_assoc($res)) {
+            $field = new Field($record);
+            $parentTab = trim($field->parentTab);
+            if(empty($parentTab)){
+                if(empty($tabs[$field->tab])){
+                    $tabs[$field->tab] = [];
+                }
+                $tabs[$field->tab][] = $field;
+            }else{
+                if(empty($tabs[$parentTab][$field->tab])){
+                    $tabs[$parentTab][$field->tab] = [];
 
+                }
+                $tabs[$parentTab][$field->tab][] = $field;
+    /*           
+                echo ("<pre>");
+                var_dump($tabs[$parentTab]);
+                echo("</pre>");
+    */
             }
-            $tabs[$parentTab][$field->tab][] = $field;
-/*           
-            echo ("<pre>");
-            var_dump($tabs[$parentTab]);
-            echo("</pre>");
-*/
         }
-    	
     }
-
-    
     return $tabs;
 }
 
 
 function getFieldNames($page){
 
-    $fm = getFileMakerConnection();
-    $cmd = $fm->newFindCommand('PHP-FORMFIELDS');
-    $cmd->addFindCriterion('page', '=='.$page);
-    //echo "finding fields for page " . $page . "<br>";
-    //cmd->addFindCriterion('username', '=='.$userName);
-    $cmd->addSortRule('sort', 1, FILEMAKER_SORT_ASCEND);
-    $result = $cmd->execute();
+    // $fm = getFileMakerConnection();
+    // $cmd = $fm->newFindCommand('PHP-FORMFIELDS');
+    // $cmd->addFindCriterion('page', '=='.$page);
+    // //echo "finding fields for page " . $page . "<br>";
+    // //cmd->addFindCriterion('username', '=='.$userName);
+    // $cmd->addSortRule('sort', 1, FILEMAKER_SORT_ASCEND);
+    // $result = $cmd->execute();
     
-    if ($fm->isError($result))
-    {
-        //echo "Error - " . $result->getMessage();
-        throw new \ErrorException("Get Field Names Failed");
-    }
+    // if ($fm->isError($result))
+    // {
+    //     //echo "Error - " . $result->getMessage();
+    //     throw new \ErrorException("Get Field Names Failed");
+    // }
 
     
-    $records = $result->getRecords();
+    // $records = $result->getRecords();
 
-    $fields = [];
-    foreach ($records as $record) {
-        $field = new Field($record);
-        $fields[] = $field->name;
+    // $fields = [];
+    // foreach ($records as $record) {
+    //     $field = new Field($record);
+    //     $fields[] = $field->name;
+    // }
+
+    // return $fields;
+
+    $con = mysqlConnection();
+    $query = "select * from $page";
+    $field_names = array();
+    if($res = mysqli_query($con, $query)) {
+        $fields = mysqli_fetch_fields($res);
+        foreach($fields as $field) {
+            array_push($field_names, $field->name);
+        }
     }
-
-    return $fields;
+    return $field_names;
 
 }
 
@@ -236,33 +210,13 @@ function getSelectList($page){
 
 function getDBItem($dbItemID,$page){
 
-    $fields = getFieldNames($page);
-    $fm = getFileMakerConnection();
-    $cmd = $fm->newFindCommand('PHP-' .$page);
-    $cmd->addFindCriterion('id', '=='.$dbItemID);
-    //echo "getting Item from " . "PHP-" . $page . "<br/>";
-    
-    $result = $cmd->execute();
-    
-    if ($fm->isError($result))
-    {
-        //echo "Error - " . $result->getMessage();
-        throw new \ErrorException("Get DBItem Failed using dbItem id ". $dbItemID);
+    $con = mysqlConnection();
+    $query = "select * from $page where id = '$dbItemID'";
+    $row = array();
+    if($res = mysqli_query($con, $query)) {
+        $row = mysqli_fetch_assoc($res);
     }
-
-    
-    $records = $result->getRecords();
-
-    $toReturn = null;
-    if(count($records)> 0){
-        $record = $records[0];
-           $dbItem = new DBItem();
-
-        $dbItem->setDBItemFields($fields);
-        $dbItem->reInit($record);
-       $toReturn = $dbItem;
-    }
-    return $toReturn;
+    return $row;
 
 }
 
@@ -308,37 +262,19 @@ function setDBItem($post,$page){
 }
 
 function newDBItem($post,$page){
-    $dbItemID = $post["id"];
     $fields = getFieldNames($page);
-    $fm = getFileMakerConnection();
-    $cmd = $fm->newAddCommand('PHP-' . $page);
-    
-    $result = $cmd->execute();
-    
-    if ($fm->isError($result))
-    {
-        //echo "Error - " . $result->getMessage();
-        throw new \ErrorException("New DBItem Failed ");
+    $keys = array();
+    $values = array();
+    foreach($fields as $key) {
+        if($key !='id') {
+            $new_key = str_replace(' ', '_', $key);
+            array_push($keys, $key);
+            array_push($values, $post[$new_key]);
+        }
     }
-
     
-    $records = $result->getRecords();
-
-    $dbItem = null;
-    if(count($records)> 0){
-        $record = $records[0];
-           $dbItem = new DBItem();
-
-        $dbItem->setDBItemFields($fields);
-        $dbItem->reInit($record);
-    }
-
-    if(!empty($dbItem)){
-        //$dbItem->setName();
-        // echo "setting store to ";
-        // //var_dump($post);
-        $dbItem->preSet($post);
-         $dbItem->commitToDatabase();
-        // echo "record committed";
-    }
+    $con = mysqlConnection();
+    $query = 'INSERT INTO `'.$page.'` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')';
+    mysqli_query($con, $query);
+    mysqli_close($con);
 }

@@ -4,7 +4,7 @@ require_once '/home/mcs/FileMaker12/FileMaker.php';
 require_once 'config.php';
 require_once 'includes/connection.php';
 $relative_path =  $_SERVER['PHP_SELF'];
-if($_SESSION["logged_in"] != "true" && strpos($relative_path, "login.php") === false && strpos($relative_path, "signup.php") === false){
+if($_SESSION["logged_in"] != "true" && strpos($relative_path, "login.php") === false && strpos($relative_path, "signup.php") === false && strpos($relative_path, "forgot.php") === false){
     
     redirectRequest("login.php");
 }
