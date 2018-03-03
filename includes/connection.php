@@ -60,41 +60,11 @@ function login($userName, $password){
 }
 
 function signup($post){
-    $page = 'Users';
-    $fields = getFieldNames($page);
-    $fm = getFileMakerConnection();
-    $cmd = $fm->newAddCommand('PHP-' . $page);
-    
-    $result = $cmd->execute();
-    
-    if ($fm->isError($result))
-    {
-        //echo "Error - " . $result->getMessage();
-        throw new \ErrorException("New DBItem Failed ");
-    }
-
-    
-    $records = $result->getRecords();
-    $salt = $records[0]->_impl->_fields['salt'][0];
-    $post['hash'] =  md5( $salt . $post['password']);
+    $con = mysqlConnection();
+    $hash =  md5( $post['password']);
     $post['access'] = 'Internal';
-    $dbItem = null;
-    if(count($records)> 0){
-        $record = $records[0];
-           $dbItem = new DBItem();
-
-        $dbItem->setDBItemFields($fields);
-        $dbItem->reInit($record);
-    }
-    if(!empty($dbItem)){
-
-        //$dbItem->setName();
-        // echo "setting store to ";
-        // //var_dump($post);
-        $dbItem->preSet($post);
-         $dbItem->commitToDatabase();
-        // echo "record committed";
-    }
+    $query ="insert into Users(name_first, name_last, hash, username) values('$post[name_first]', '$post[name_last]', '$hash', '$post[username]')";
+    mysqli_query($con, $query); 
 }
 
 
@@ -182,83 +152,45 @@ function getFieldNames($page){
 }
 
 function getSelectList($page){
-
-    $fm = getFileMakerConnection();
-    $cmd = $fm->newFindCommand('PHP-' . $page);
-    //echo "finding fields for page " . $page . "<br>";
-    //cmd->addFindCriterion('username', '=='.$userName);
-    $cmd->addSortRule('name', 1, FILEMAKER_SORT_DESCEND);
-    $result = $cmd->execute();
-    
-    if ($fm->isError($result))
-    {
-        //echo "Error - " . $result->getMessage();
-        throw new \ErrorException("Get Field Names Failed");
+    $con = mysqlConnection();
+    $query = "select * from '$page' order by sort";
+    $rows = [];
+    if($res = mysqli_query($con, $query)) {
+        $rows = mysqli_fetch_assoc($res);
     }
-
-    
-    $records = $result->getRecords();
-
-    $items = [];
-    foreach ($records as $record) {
-        $items[$record->getField('id')] = $record->getField('Name');
-    }
-
-    return $items;
-
+    mysqli_close($con);
+    return $rows;
 }
 
 function getDBItem($dbItemID,$page){
-
     $con = mysqlConnection();
     $query = "select * from $page where id = '$dbItemID'";
     $row = array();
     if($res = mysqli_query($con, $query)) {
         $row = mysqli_fetch_assoc($res);
     }
+    mysqli_close($con);
     return $row;
 
 }
 
 function setDBItem($post,$page){
-    $dbItemID = $post["id"];
-    //echo "setting dbItem with id " . $dbItemID . "<br/>";
+    $id = $post["id"];
     $fields = getFieldNames($page);
-    $fm = getFileMakerConnection();
-    $cmd = $fm->newFindCommand('PHP-'.$page);
-    $cmd->addFindCriterion('id', '=='.$dbItemID);
     
-    $result = $cmd->execute();
+    $values = array();
+    foreach($fields as $key) {
+        if($key !='id') {
+            $new_key = str_replace(' ', '_', $key);
+            array_push($values, '`'.$key.'`="'.$post[$new_key].'"');
+        }
+    }
     
-    if ($fm->isError($result))
-    {
-        //echo "Error - " . $result->getMessage();
-        throw new \ErrorException("Get DBItem Failed using dbItem id ". $dbItemID);
-    }
-
-    
-    $records = $result->getRecords();
-    //echo "found " . count($records) . "<br/>";
-
-    $dbItem = null;
-    if(count($records)> 0){
-        $record = $records[0];
-           $dbItem = new DBItem();
-
-        $dbItem->setDBItemFields($fields);
-        $dbItem->reInit($record);
-        //echo "record reinitialized <br/>";
-    }
-
-    if(!empty($dbItem)){
-        //$dbItem->setName();
-         //echo "setting store to ";
-         //var_dump($post);
-        //echo "records id is " . $record->getField('id') . " on dbItem its " . $dbItem->id . "<br/>";
-        $dbItem->preSet($post);
-         $dbItem->commitToDatabase();
-        //echo "record committed";
-    }
+    $con = mysqlConnection();
+    $query = 'UPDATE `'.$page.'` SET '.implode(',', $values).' where id= '.$id.'';
+    echo $query;
+    mysqli_query($con, $query);
+    mysqli_close($con);
 }
 
 function newDBItem($post,$page){

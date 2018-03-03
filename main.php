@@ -31,25 +31,6 @@
 	$dbItems = getDBItems($page);
 	$fields = getFields($page);
 	$tabs = array_keys($fields);
-	function glob_recursive($directory, &$directories = array()) {
-        foreach(glob($directory, GLOB_ONLYDIR | GLOB_NOSORT) as $folder) {
-            $directories[] = $folder;
-            glob_recursive("{$folder}/*", $directories);
-        }
-    }
-	function findFiles($directory, $extensions = array()) {
-	    
-	    glob_recursive($directory, $directories);
-	    $files = array ();
-	    foreach($directories as $directory) {
-	        foreach($extensions as $extension) {
-	            foreach(glob("{$directory}/*.{$extension}") as $file) {
-	                array_push($files, $file);
-	            }
-	        }
-	    }
-	    return $files;
-	}
 
 	$imageFiles = findFiles("./uploads", array (
 	    "jpg",

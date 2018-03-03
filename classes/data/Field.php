@@ -32,7 +32,20 @@ class Field
 		$this->width = $this->rec['width'];
 		$this->type = $this->rec['type'];
 		$this->choices = [];
-
+		if (strpos($this->rec['choices'], '[') !== false) {
+			$search = str_replace("[", "",$this->rec['choices']);
+			$search = str_replace("]", "",$search);
+			$temp = [];
+			$temp[] = "";
+			$temp = $temp + getSelectList($search);
+			$this->choices = $temp;
+			$this->related = $search;
+		}else{
+			$temp = explode("\n",$this->rec['choices']);
+			foreach ($temp as $key => $value) {
+				$this->choices[$value] = $value;
+			}
+		}
 		//var_dump($this->choices);
 	//echo "<br/>";
 	}

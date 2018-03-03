@@ -6,15 +6,13 @@
 
 	$page = "WorkOrders";
 	
-
-
 	if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		if (empty($_POST["id"])) {
 			$result = newDBItem($_POST,$page);
 			echo $result;
 		}else{
 		setDBItem($_POST,$page);
-	}
+		}
 
 		foreach($_FILES as $file){
 
@@ -40,76 +38,76 @@
 ?>
 
 <div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="">
-                        <div class="page-header-title">
-                            <h4 class="page-title"><?php echo $page; ?></h4>
-                        </div>
-                    </div>
-                    <div class="page-content-wrapper ">
-                        <div class="container">
-                            <div class="row">
-                                <div id="asset-list" class="col-sm-6">
-									<div class="panel panel-default">
-											<div class="panel-heading">
-												<h4 class="panel-title">Quick Add</h4>
-											</div>
-											<div class="panel-body text-center">
-												<form class="form-inline form-group" role="form" id="quickForm" action="" method="post" enctype="multipart/form-data">
-													<div class="form-group m-l-10"> 
-														<label class="sr-only" for="exampleInputEmail2">Name</label> 
-														<input placeholder="Enter Name" id="quickAdd" Name="Name" type="text" required="required" class="form-control">
-													</div>
-													<div class="form-group m-l-10">
-														<button type="submit" class="btn btn-primary btn-lg waves-effect waves-light m-l-10" value="submit" name="submit">Add Work Order</button>
-													</div> 
-												</form>
-											</div>
+    <!-- Start content -->
+    <div class="content">
+        <div class="">
+            <div class="page-header-title">
+                <h4 class="page-title"><?php echo $page; ?></h4>
+            </div>
+        </div>
+        <div class="page-content-wrapper ">
+            <div class="container">
+                <div class="row">
+                    <div id="asset-list" class="col-sm-6">
+						<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">Quick Add</h4>
+								</div>
+								<div class="panel-body text-center">
+									<form class="form-inline form-group" role="form" id="quickForm" action="" method="post" enctype="multipart/form-data">
+										<div class="form-group m-l-10"> 
+											<label class="sr-only" for="exampleInputEmail2">Name</label> 
+											<input placeholder="Enter Name" id="quickAdd" Name="Name" type="text" required="required" class="form-control">
 										</div>
+										<div class="form-group m-l-10">
+											<button type="submit" class="btn btn-primary btn-lg waves-effect waves-light m-l-10" value="submit" name="submit">Add Work Order</button>
+										</div> 
+									</form>
+								</div>
+							</div>
+						</div>
+					<div class="col-sm-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">Add New Work Order</h4>
+							</div>
+							<div class="panel-body text-center">
+								<form class="form-inline form-group">
+									<div class="form-group m-l-10">
+									<a href="#modal1" class="btn btn-primary btn-lg waves-effect waves-light m-l-10">Create Work Order</a>
 									</div>
-								<div class="col-sm-6">
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<h4 class="panel-title">Add New Work Order</h4>
-										</div>
-										<div class="panel-body text-center">
-											<form class="form-inline form-group">
-												<div class="form-group m-l-10">
-												<a href="#modal1" class="btn btn-primary btn-lg waves-effect waves-light m-l-10">Create Work Order</a>
-												</div>
-											</form>
-										</div>
-									</div>	
-								</div>
-								</div>
-                            </div><!-- end row ADDS-->                     
-                        </div><!-- Add Asset container -->
+								</form>
+							</div>
+						</div>	
+					</div>
+					</div>
+                </div><!-- end row ADDS-->                     
+            </div><!-- Add Asset container -->
 
-                        <div id="asset-list" class="container col-8">
-                        	<div class="row">
-                        		
-                        	</div>
-                        </div> <!-- AssetList Container -->
+            <div id="asset-list" class="container col-8">
+            	<div class="row">
+            		
+            	</div>
+            </div> <!-- AssetList Container -->
 
-                        <div class="row">
-                        	<div class="col-md-12">
-                        		<div class="list-group text-center">
-                        			<?php foreach ($dbItems as $dbItem) { ?>
-                        				<a href="#modal1" id="btn-default-<?php echo $dbItem['id']; ?>" class="list-group-item" onclick="getDBItem(<?php echo $dbItem['id'] . ",'" . $page . "'"; ?>)">
-                        					<h5 class="left asset-label valign"> <?php echo $dbItem['Name']; ?></h5>
-                        				</a>
+            <div class="row">
+            	<div class="col-md-12">
+            		<div class="list-group text-center">
+            			<?php foreach ($dbItems as $dbItem) { ?>
+            				<a href="#modal1" id="btn-default-<?php echo $dbItem['id']; ?>" class="list-group-item" onclick="getDBItem(<?php echo $dbItem['id'] . ",'" . $page . "'"; ?>)">
+            					<h5 class="left asset-label valign"> <?php echo $dbItem['Name']; ?></h5>
+            				</a>
 
-                        			<?php } ?>
-                        		</div>
-                        	</div>
-                        	
-                        </div>
-					</div> <!-- Page content Wrapper -->
-                </div> <!-- content -->
+            			<?php } ?>
+            		</div>
+            	</div>
+            	
+            </div>
+		</div> <!-- Page content Wrapper -->
+    </div> <!-- content -->
 		
 		  <!-- Modal Structure -->
-		 <div id="modal1" class="modal">
+	<div id="modal1" class="modal">
 		 <form id="itemForm" action="" method="post" enctype="multipart/form-data">
 		 	<input id="id" name="id" type="hidden" />
 			 <div class="nav-content">
@@ -382,59 +380,53 @@
 					      		</div>
 					      	</div>
 				      	</div>
+				      	<div id="checklist" class="modal-content">
+			      	 		<div class="row modal-body">
+					    		<div class="col-xs-12"></div>
+
+					    			<?php foreach($tabs as $tab) { ?>
+					    			<div class="col-xs-12 checklist-title"><?php echo $tab; ?></div>
+					    			<hr/>
+
+					    			<?php foreach ($fields[$tab] as $field){ 
+					      					if((is_array($field))){ 
+					      						foreach( $field as $subField){
+					      							?>
+					      								<div class="col-sm-4 col-xs-12" id="check-<?php  echo friendly($subField->name); ?>">
+					      									<?php echo $subField->name; ?>
+					      									
+					      								</div>
+					      							<?php
+
+					      						}
+													?>
+
+					      					<?php }else { ?>
+
+					      						<div class="col-sm-4 col-xs-12" id="check-<?php  echo friendly($field->name); ?>"><?php echo $field->name; ?></div>
+
+
+					      					<?php	} ?>
+
+					    			<?php }
+					    			 ?><div class="clear"></div>
+					    			<?php } ?>
+					    	</div>
+						</div>
+					    <div class="modal-footer">
+					     	 <a href="" class="btn btn-primary">Close</a>
+					     	 <button type="submit" class="btn btn-success" value="submit" name="submit">Submit</button>
+					    </div>
 				     </div>
-
-
 		      <?php }
 
 		      //here is where I need to create the checklist portion
 
 
 
-		      ?>
-		      <div id="checklist" class="modal-content">
-		      	 		<div class="row modal-body">
-				    		<div class="col-xs-12"></div>
-
-				    			<?php foreach($tabs as $tab) { ?>
-				    			<div class="col-xs-12 checklist-title"><?php echo $tab; ?></div>
-				    			<hr/>
-
-				    			<?php foreach ($fields[$tab] as $field){ 
-				      					if((is_array($field))){ 
-				      						foreach( $field as $subField){
-				      							?>
-				      								<div class="col-sm-4 col-xs-12" id="check-<?php  echo friendly($subField->name); ?>">
-				      									<?php echo $subField->name; ?>
-				      									
-				      								</div>
-				      							<?php
-
-				      						}
-												?>
-
-				      					<?php }else { ?>
-
-				      						<div class="col-sm-4 col-xs-12" id="check-<?php  echo friendly($field->name); ?>"><?php echo $field->name; ?></div>
-
-
-				      					<?php	} ?>
-
-				    			<?php }
-				    			 ?><div class="clear"></div>
-				    			<?php } ?>
-
-
-
-
-				    	</div>
-			</div>
-		    <div class="modal-footer">
-		     	 <a href="" class="btn btn-primary">Close</a>
-		     	 <button type="submit" class="btn btn-success" value="submit" name="submit">Submit</button>
-		    </div>
-		    </form>
-		 </div>
+		      	?>
+		    	</form>
+		 	</div>
 
 		</div>
 	</div>
